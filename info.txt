@@ -1,6 +1,36 @@
-So here what we are doing is that we have three main things 1st one is admin which can make topics and then partitions on that topic ,then we have a producer which is like producing some data you can give the  name,address ,particular location longitude latitude and then we have the consumer which has some group id through which it can access may be all or some paritions , then he can consume all the data from the producer.
+Kafka is a distributed event streaming platform used to build real-time data pipelines and streaming applications. It’s designed to handle high throughput, low latency, and scalability. Kafka is widely used for handling large volumes of real-time data, managing streams, and creating powerful data workflows.
+
+Kafka Architecture Overview
+Kafka Brokers: Kafka brokers are the servers that manage the storage and transmission of Kafka topics and messages. A Kafka cluster consists of one or more brokers. Each broker stores data (in the form of partitions) for different topics and handles communication between producers and consumers.
+
+Kafka Topics: Topics in Kafka are logical channels or categories to which messages are published. A topic organizes messages into a category so consumers can subscribe to specific topics. Topics are further divided into partitions to distribute the data across multiple Kafka brokers.
+
+Partitions: Kafka topics are split into partitions. Each partition is an ordered, immutable sequence of messages. Partitions allow Kafka to scale by enabling messages from different partitions to be processed in parallel. Each partition is stored on a broker, and partitions can be replicated for fault tolerance.
+
+Zookeeper: Kafka relies on Zookeeper for managing and coordinating the Kafka brokers. Zookeeper helps with leader election, broker metadata, and fault tolerance. Kafka keeps track of its cluster nodes (brokers) and partitions through Zookeeper. However, newer versions of Kafka can run without Zookeeper.
+
+Producers: Producers are applications that push (produce) messages into Kafka topics. Producers can write to one or more partitions of a topic, and Kafka ensures that the messages are stored reliably in the correct partitions. Producers are responsible for pushing real-time data into the system.
+
+Consumers: Consumers are processes or applications that subscribe to Kafka topics and read (consume) the messages. Consumers fetch messages from specific topics and process them. Multiple consumers can share the load of processing data from a topic using consumer groups.
+
+Kafka Consumer Groups: A consumer group is a group of consumers working together to consume data from Kafka topics. Each consumer in the group reads from a unique set of partitions, ensuring that the workload is distributed among multiple consumers. This allows for parallel processing of messages and provides fault tolerance.
+
+--------------------------------------------------------------------------------------------------------------------
+How Admin, Producer, and Consumer Work
+Admin: The Admin API in Kafka allows you to manage Kafka resources, such as topics, brokers, and consumer groups. Using the Admin API, you can create and delete topics, view metadata for topics, and check the status of consumer groups and partitions. The Admin API simplifies managing Kafka clusters.
+
+Producer: A Producer in Kafka is responsible for writing data to Kafka topics. Producers push records (messages) into specific topics, and each message is stored in the partition of that topic. The producer can choose the partition (or let Kafka choose it automatically) for each message. Kafka producers are designed to handle high throughput and can scale horizontally to handle large volumes of data.
+
+Consumer: A Consumer subscribes to a Kafka topic and processes the messages (records) produced by producers. Consumers can read data from topics in real time. Kafka allows consumers to be part of a consumer group so that multiple consumers can share the load of processing messages from different partitions of a topic. Each consumer in the group gets messages from one partition, ensuring that all partitions are processed concurrently. If one consumer fails, the other consumers in the group can take over processing its partitions, ensuring fault tolerance.
+
+---------------------------------------------------------------------------------------------------------------
+
+HOW TO RUN FILES
+- firstly run the file admin -> node admin.js
+- then run the producer -> node producer.js and then write the name and direction north/south
+- then run the consumer -> node consumer.js <any_consumer_name> , Remember that there are two partitions here so you can make two consumers using same <any_consumer_name> groupId , making more than two consumer per groupID will not show any message, if you create a new <any_consumer_name> so it will show all the messages of the partition , but if you create any consumer of same groupId the messages will be divided 
 
 
-
+--------------------------------------------------------------------------------------------------------
 
 Add to run all this please keep in mind you have to run two docker images 1st one is the zookeeperand the other one is Kafka always use your current ipv 4 for this and if the ip address changes the Docker image will not run you have to rerun it for that particular ip
