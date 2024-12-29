@@ -44,4 +44,6 @@ And here is the **Kafka Docker image command** for running Zookeeper:
 
 ![Zookeeper Docker Image Command](https://mittrandibalti.s3.eu-north-1.amazonaws.com/Screenshot+2024-12-28+153724.png)
 
-Git clone this repo to push the code
+Git clone this repo to push the code 
+
+To read about Kafka and the files please visit the info.txt
