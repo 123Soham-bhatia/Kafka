@@ -1,0 +1,6 @@
+So here what we are doing is that we have three main things 1st one is admin which can make topics and then partitions on that topic ,then we have a producer which is like producing some data you can give the  name,address ,particular location longitude latitude and then we have the consumer which has some group id through which it can access may be all or some paritions , then he can consume all the data from the producer.
+
+
+
+
+Add to run all this please keep in mind you have to run two docker images 1st one is the zookeeperand the other one is Kafka always use your current ipv 4 for this and if the ip address changes the Docker image will not run you have to rerun it for that particular ip
